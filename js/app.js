@@ -1,20 +1,16 @@
 
 
-//when the user guesses they get the option to start a new game
-//newGame function
 //You’ll need to write code that allows users to start a new game without making additional calls to the server. 
 //Clicking “New Game” should trigger the JavaScript function that starts a new game
-
 
 
 $(document).ready(function(){
 
 	
-
-
-	var answer = Math.floor(Math.random() *100);
-//
-
+	var answer = Math.floor((Math.random() *100 ) + 1);
+	document.getElementById("feedback").innerHTML = answer;
+		
+		
 	var clicker = 0;
 	
 	
@@ -36,7 +32,6 @@ $(document).ready(function(){
 		if (!isNaN(guessNum)) { 
 			$('.guessBox').append("<li>"+ $("input[type='text']").val() + "</li>");
 			$(".text").val('');
-	
 			clicker++; //update count  
 			document.getElementById("count").innerHTML = clicker;
 		}
@@ -67,20 +62,9 @@ $(document).ready(function(){
 			else if (difference >= 1 && difference <= 10) {
 				document.getElementById("feedback").innerHTML = "Very hot!";	
 			}
-	
-
-
-	
-
-		
-		
-		
-
+			
 	});
 
-
-
-	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
     	$(".overlay").fadeIn(1000);
@@ -92,6 +76,13 @@ $(document).ready(function(){
   		$(".overlay").fadeOut(1000);
   	});
 
-});
+  	$("a.new").click(function(){
+		document.getElementById("feedback").innerHTML = "Make a Guess!";
+		document.getElementById("count").innerHTML = 0;
+		clicker = 0;
+		document.getElementById("guessList").innerHTML = "";
+		var answer = Math.floor((Math.random() *100 ) + 1);
+	});
 
+});
 
